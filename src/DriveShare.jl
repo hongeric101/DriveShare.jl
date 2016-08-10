@@ -1,10 +1,11 @@
 module DriveShare
-export getSegment, getAllSegments, getSegmentSummary, getAnonymizedPaths, decodePolyline
+export get_anonymized_paths, get_highlevel_info
 
 using Requests: get, save
 using DataFrames
 import JSON
 
+#=
 function getSegment(name::AbstractString)
 	json = get("http://driveshare.me/juliasegs/$name")
 	save(json, "$name.json")
@@ -22,13 +23,14 @@ function getSegmentSummary()
 	save(json, "segsummary.json")
 	JSON.parsefile("segsummary.json", dicttype=Dict, use_mmap=true)
 end
+=#
 
-function getAnonymizedPaths()
+function get_anonymized_paths()
 	save(get("http://driveshare.me/anonUTM"), "anonUTM.json")
 	JSON.parsefile("anonUTM.json", dicttype=Dict, use_mmap=true)
 end
 
-function getHighLevelInfo()
+function get_highlevel_info()
 	save(get("http://driveshare.me/highlevel"), "highlevel.csv")
 	readtable("highlevel.csv")
 end
