@@ -1,6 +1,6 @@
 # DriveShare.jl
 
-A Julia package for processing driving datasets from [DriveShare.me](http://driveshare.me).
+A Julia package for processing driving [DriveShare.me](http://driveshare.me) datasets.
 
 Please read the [documentation](http://nbviewer.ipython.org/github/sisl/DriveShare.jl/blob/master/doc/DriveShare.ipynb).
 
