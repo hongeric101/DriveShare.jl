@@ -31,3 +31,28 @@ function scatter_targets(high_level, A, B)
     end
     p
 end
+
+function plot_drive(index::Int; scatter::Bool=false)
+    utmx = Float64[]
+    utmy = Float64[]
+    path = anon_paths[index]["utm"]
+    for pt in path
+        push!(utmx, pt[1])
+        push!(utmy, pt[2])
+    end
+    lox, hix = extrema(utmx)
+    loy, hiy = extrema(utmy)
+    max_sep = max(hix - lox, hiy - loy)
+    midx = (hix + lox)/2
+    midy = (hiy + loy)/2
+    half_sep = max_sep/2*1.1
+    xlims = (midx-half_sep, midx+half_sep)
+    ylims = (midy-half_sep, midy+half_sep)
+    p = plot(utmx, utmy, xlabel="x position [m]", ylabel="y position [m]", xlims=xlims, ylims=ylims, size=(800,800))
+
+    if scatter == true
+        scatter!(p, utmx, utmy)
+    end
+gi
+    p
+end

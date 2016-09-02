@@ -15,13 +15,13 @@ function get_dataset(version)
     if version == :trace
         url = "http://driveshare.me/anonUTM"
         filepath = joinpath(dirprefix, "anonUTM.json")
-        run(`wget --continue --timestamping --output-document=$filepath $url`)
+        success(`wget --continue --timestamping --output-document=$filepath $url`)
         sleep(0.1)
         return JSON.parsefile(filepath, dicttype=Dict, use_mmap=true)
     elseif version == :highlevel
         url = "http://driveshare.me/highlevel"
         filepath = joinpath(dirprefix, "highlevel.csv")
-        run(`wget --continue --timestamping --output-document=$filepath $url`)
+        success(`wget --continue --timestamping --output-document=$filepath $url`)
         sleep(0.1)
         return readtable(filepath)
     end
