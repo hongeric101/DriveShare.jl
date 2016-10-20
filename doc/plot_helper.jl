@@ -53,6 +53,6 @@ function plot_drive(index::Int; scatter::Bool=false)
     if scatter == true
         scatter!(p, utmx, utmy)
     end
-gi
+
     p
 end
