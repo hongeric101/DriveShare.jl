@@ -1,6 +1,7 @@
 using Plots
 using Interact
-plotlyjs()
+# plotlyjs()
+pyplot()
 
 unique_vehicle_ids(high_level) = sort(unique(high_level[:vehicle_ID]))
 
